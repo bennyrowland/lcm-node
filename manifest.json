@@ -1,0 +1,36 @@
+{
+  "connections": [
+    {
+      "port": 9090,
+      "labels": ["api"]
+    }
+  ],
+  "registrations": [
+    {
+      "plugin": {
+        "register": "good",
+        "options": {
+          "reporters": [
+            {
+              "reporter": "good-console",
+              "events": {
+                "response": "*",
+                "log": "*",
+                "request": "*"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "plugin": "./api",
+      "options": {
+        "select": ["api"],
+        "routes": {
+          "prefix": "/api"
+        }
+      }
+    }
+  ]
+}
